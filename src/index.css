@@ -1,0 +1,180 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: white;
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.icon {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.img-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.img {
+  background-size: contain;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  /* justify-content: space-evenly; */
+}
+
+.footer .caption {
+  flex: 1;
+}
+
+footer h2 {
+  margin: 0;
+  font-size: 16px;
+  text-transform: uppercase;
+  opacity: 0.4;
+}
+
+footer h3 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.bg-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to top, #000, rgba(0, 0, 0, 0));
+}
+
+.info-icon {
+  display: block;
+  cursor: pointer;
+}
+
+aside {
+  position: fixed;
+  right: 0;
+  top: 0;
+  inset: 0;
+}
+
+aside .aside-overlay {
+  position: absolute;
+  inset: 0;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  opacity: .3;
+  background: #242424;
+}
+
+aside .content {
+  z-index: 15;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  overflow-y: scroll;
+  height: 100%;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  background: #242424;
+}
+
+aside .info {
+  flex: 1;
+  line-height: 1.7;
+}
+
+aside .close-icon {
+  cursor: pointer;
+  margin-left: auto;
+}
+
+aside h3 {
+  font-size: 26px;
+  margin: 0;
+}
+
+aside .date {
+  margin-top: -10px;
+  font-size: 0.9rem;
+  opacity: .7;
+}
+
+.loadingState {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.loadingState .loading-icon {
+  opacity: 0.2;
+  font-size: 5rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+@media (min-width: 640px) {
+  aside {
+    min-width: 30%;
+    max-height: 100vh;
+    box-shadow: 0 0 40px 1px #030615;
+  }
+
+  aside content {
+    margin: unset;
+    width: 100%;
+  }
+
+  .aside .aside-overlay {
+    right: 0;
+    left: unset;
+    width: 100vw;
+  }
+}
