@@ -3,10 +3,11 @@ import Footer from "./compenents/Footer"
 import Pic from "./compenents/Pic"
 import Sidebar from "./compenents/Sidebar"
 
+type dataObj = ({ title: string, explanation: string, date: string, hdurl: string } | null)
+
 function App() {
-  const [data, setData] = useState(null);
-  const [showModel, setShowModel] = useState(false);
-  const [loading, setLoading] = useState(false)
+  const [data, setData] = useState<dataObj>(null)
+  const [showModel, setShowModel] = useState(false)
 
   useEffect(() => {
     async function fetchAPIData() {
@@ -17,7 +18,7 @@ function App() {
       const today = (new Date()).toDateString()
       const localKey = `NASA-${today}`
       if (localStorage.getItem(localKey)) {
-        const apiData = JSON.parse(localStorage.getItem(localKey))
+        const apiData = JSON.parse(localStorage.getItem(localKey) || "")
         setData(apiData)
         console.log('Fetched from cache today')
         return
@@ -30,7 +31,10 @@ function App() {
         setData(apiData)
         console.log('Fetched from API today')
       } catch (err) {
-        console.log(err.message)
+        if (err instanceof Error)
+          console.log(err.message)
+        else
+          console.error("unKnown error...!")
       }
     }
     fetchAPIData()
@@ -51,7 +55,7 @@ function App() {
       {data && (
         <Footer data={data} handelToggle={handelToggle} />
       )}
-      {showModel && (
+      {showModel && data && (
         <Sidebar data={data} handelToggle={handelToggle} />
       )}
     </>

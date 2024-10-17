@@ -1,4 +1,15 @@
-export default function Footer({ data, handelToggle }) {
+import React from "react";
+interface dataObj {
+    title: string
+    explanation: string
+    date: string
+    hdurl: string
+}
+interface FooterComp {
+    data: dataObj | null
+    handelToggle(): void
+}
+const Footer: React.FC<FooterComp> = ({ data, handelToggle }) => {
     return (
         <footer className="footer">
             <div
@@ -10,5 +21,7 @@ export default function Footer({ data, handelToggle }) {
             <i onClick={handelToggle}
                 className="fa-solid fa-circle-info fa-2x info-icon icon"></i>
         </footer>
-    );
+    )
 }
+
+export default Footer

@@ -1,4 +1,14 @@
-export default function Sidebar({ data, handelToggle }) {
+import React from "react"
+interface dataObj {
+    title: string
+    date: string
+    explanation: string
+}
+interface SidebarComp {
+    data: dataObj
+    handelToggle(): void
+}
+const Sidebar: React.FC<SidebarComp> = ({ data, handelToggle }) => {
     return (
         <aside>
             <div onClick={handelToggle}
@@ -11,5 +21,6 @@ export default function Sidebar({ data, handelToggle }) {
                     className="fa-solid fa-arrow-right-long fa-2x close-icon icon"></i>
             </div>
         </aside>
-    );
+    )
 }
+export default Sidebar
